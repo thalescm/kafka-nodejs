@@ -38,10 +38,27 @@ if (cluster.isMaster) {
 
 else
 {
+    // Starting Server Now.
+    node_server_starter()
+}
+
+
+/*
+    Function to start the server and do all the heavy lifting.
+
+    Accept : JSON
+    Listen Port : 8125
+    URL : /upload/topic/A
+            /upload/topic/B
+            /upload/topic/C
+
+*/
+function node_server_starter()
+{
     /*
         Lets create a server to wait for request.
     */
-    http.createServer(function(request, response)
+    var server_start = http.createServer(function(request, response)
     {
         /*
             Making sure we are waiting for a JSON.
@@ -217,9 +234,10 @@ else
     /*
         Listen on port 8125
     */
-    }).listen(8125);
-}
+    })
 
+    server_start.listen(8125);
+}
 
 
 /*
