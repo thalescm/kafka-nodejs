@@ -309,7 +309,7 @@ What we are trying to achieve ?
 1. Send `json` from and browser/`curl` to `nodejs`.
 2. `nodejs` will redirect `json` data to `kafka`.
 3. Further processing is done on `kafka`.
-4. We can then see the `json` arrive on `kafka-console-consumer.sh` script.
+4. We can then see the `json` arrival in `kafka`, using `kafka-console-consumer.sh` script.
 
 ###Step 1 : Create a script called `json_nodejs_kafka.js` with below script. 
 
