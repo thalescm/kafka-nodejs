@@ -33,7 +33,7 @@ http.createServer(function(request, response)
 	
 		/* 
 			CHUNK which we recive from the clients
-			For out request we are assuming its going to be a JSON data.
+			For our request we are assuming its going to be a JSON data.
 			We print it here on the console. 
 		*/
 		console.log(chunk.toString('utf8'))

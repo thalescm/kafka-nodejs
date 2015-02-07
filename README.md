@@ -430,3 +430,21 @@ What we are trying to achieve ?
 
 
 `{"username":"xyz","password":"xyz"}` data received from `nodejs` server.
+
+##### Useful Links.
+
+[http://kafka.apache.org/documentation.html](http://kafka.apache.org/documentation.html "Kafka Documentation")
+
+[http://nodejs.org/](http://nodejs.org/)
+
+[http://nodejs.org/api/http.html](http://nodejs.org/api/http.html)
+
+<https://www.npmjs.com/package/kafka-node>
+
+<https://cwiki.apache.org/confluence/display/KAFKA/Index>
+
+<https://github.com/pelger/Kafkaesque>
+
+<https://github.com/joyent/node/wiki/installing-node.js-via-package-manager#enterprise-linux-and-fedora>
+
+<http://stackoverflow.com/questions/7172784/how-to-post-json-data-with-curl-from-terminal-commandline-to-test-spring-rest>
