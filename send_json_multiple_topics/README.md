@@ -26,6 +26,8 @@ What we are trying to achieve ?
 
 ###Step 4 :  Output on nodejs console
 
+Running `node` 
+
     [nginx-admin@nginx nodejs]$ node json_nodejs_multiple_topics.js 
     For Topic A
     {"username":"xyz","password":"xyz"}
@@ -38,6 +40,26 @@ What we are trying to achieve ?
     { topic_c: { '0': 0 } }
     ERROR: Could not Process this URL :/upload/topic/D
     {"username":"efg","password":"xyz"}
+
+
+To check `cluster` details like worker pid use the below command. Currently VM is running a single core.
+If we have multi-core cpu, then we will see multiple lines like below.
+
+    23521,Master Worker 23524 online
+    23521,Master Worker 23526 online
+    23521,Master Worker 23523 online
+    23521,Master Worker 23528 online
+
+Here is the command.
+
+    [nginx-admin@nginx nodejs]$ NODE_DEBUG=cluster node json_nodejs_multiple_topics.js 
+    15644,Master Worker 15646 online
+    ERROR: Could not Process this URL :/upload/topic/D
+    {"username":"efg","password":"xyz"}
+    For Topic C
+    {"username":"efg","password":"xyz"}
+    { topic_c: { '0': 1 } }
+
 
 `{"username":"xyz","password":"xyz"}` request from the `curl` command.
 `{ test: { '0': 29 } }` response from the kafka cluster that, it has received the `json`.
