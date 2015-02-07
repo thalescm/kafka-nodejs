@@ -107,7 +107,7 @@ Our single node Kafka cluster is Ready.
 
 
 
-<a name="Installing KAFKA Single Node - Quick Start."></a>
+<a name="Installing NodeJS on Centos 6.6."></a>
 
 # Installing NodeJS on Centos 6.6.
 
