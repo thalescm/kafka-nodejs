@@ -1,3 +1,23 @@
+
+#Integrating NODEJS and Kafka  
+
+Below are the list required to integrate NodeJS and Kafka.
+This is a simple HOWTO to get started.
+
+---
+
+Table of Contents
+
+* <a href="#Installing KAFKA Single Node - Quick Start.">Installing KAFKA Single Node - Quick Start.</a>
+* <a href="#Installing NodeJS on Centos 6.6.">Installing NodeJS on Centos 6.6.</a>
+* <a href="#NodeJS Kafka Producer - Using `kafka-node`">NodeJS Kafka Producer - Using `kafka-node`.</a>
+* <a href="#Sending JSON to NodeJS to Kafka">Sending JSON to NodeJS to Kafka.</a>
+
+---
+
+
+<a name="Installing KAFKA Single Node - Quick Start."></a>
+
 # Installing KAFKA Single Node - Quick Start.
 
 ### Download and  Extract
@@ -87,6 +107,7 @@ Our single node Kafka cluster is Ready.
 
 
 
+<a name="Installing KAFKA Single Node - Quick Start."></a>
 
 # Installing NodeJS on Centos 6.6.
 
@@ -221,6 +242,7 @@ You will see the message received on the script terminal.
 
 Now we are all set to do some RND. 
 
+<a name="NodeJS Kafka Producer - Using `kafka-node`"></a>
 
 #NodeJS Kafka Producer - Using `kafka-node`
 
@@ -301,6 +323,7 @@ below are the Server Details.
 	This is another message here 
 	This is the First Message I am sending
 
+<a name="Sending JSON to NodeJS to Kafka"></a>
 
 # Sending JSON to NodeJS to Kafka.
 
