@@ -6,7 +6,7 @@
 
 ---
 
-Table of Contents
+###Table of Contents
 
 1. <a href="#Integrating NODEJS and Kafka">Integrating NODEJS and Kafka</a>
 2. <a href="#Installing KAFKA Single Node - Quick Start.">Installing KAFKA Single Node - Quick Start.</a>
