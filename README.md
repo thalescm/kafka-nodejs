@@ -1,26 +1,57 @@
 
+<a name="Integrating NODEJS and Kafka"></a>
+
 #Integrating NODEJS and Kafka  
 
-Below are the list required to integrate NodeJS and Kafka.
-This is a simple HOWTO to get started.
 
 ---
 
 Table of Contents
 
-* <a href="#Installing KAFKA Single Node - Quick Start.">Installing KAFKA Single Node - Quick Start.</a>
-* <a href="#Installing NodeJS on Centos 6.6.">Installing NodeJS on Centos 6.6.</a>
-* <a href="#NodeJS Kafka Producer - Using `kafka-node`">NodeJS Kafka Producer - Using `kafka-node`.</a>
-* <a href="#Sending JSON to NodeJS to Kafka">Sending JSON to NodeJS to Kafka.</a>
+1. <a href="#Integrating NODEJS and Kafka">Integrating NODEJS and Kafka</a>
+2. <a href="#Installing KAFKA Single Node - Quick Start.">Installing KAFKA Single Node - Quick Start.</a>
+	 * <a href="#Download and  Extract">Download and  Extract</a>
+	 * <a href="#Now we are ready to start all the services required.">Now we are ready to start all the services required.</a>
+	 * <a href="#Next we start server.">Next we start server.</a>
+	 * <a href="#Creating Topics">Creating Topics</a>
+	 * <a href="#Send some message">Send some message</a>
+	 * <a href="#Start a Consumer">Start a Consumer</a>
+3. <a href="#Installing NodeJS on Centos 6.6.">Installing NodeJS on Centos 6.6.</a>
+	 * <a href="#Installing `nodejs` and `npm` on centos is very simple.">Installing `nodejs` and `npm` on centos is very simple.</a>
+	 * <a href="#Installing `gcc-c++` and `make`.">Installing `gcc-c++` and `make`.</a>
+	 * <a href="#Later on we will need `kafka-node` lets install that as well.">Later on we will need `kafka-node` lets install that as well.</a>
+	 * <a href="#Lets do a test.">Lets do a test.</a>
+	 * <a href="#Lets make some simple changes to exsisting script to handle JSON.">Lets make some simple changes to exsisting script to handle JSON.</a>
+	 * <a href="#NodeJS Kafka Producer - Using `kafka-node`">NodeJS Kafka Producer - Using `kafka-node`</a>
+		 * <a href="#Step 1 - Copy the below script in a file called `producer_nodejs.js`.">Step 1 - Copy the below script in a file called `producer_nodejs.js`.</a>
+		 * <a href="#Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`">Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`</a>
+		 * <a href="#Step 3 - Start the consumer service as in the below command.">Step 3 - Start the consumer service as in the below command.</a>
+		 * <a href="#Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer.">Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer.</a>
+		 * <a href="#Step 5 - Check on the consumer you will see the message sent from `nodejs`.">Step 5 - Check on the consumer you will see the message sent from `nodejs`.</a>
+	 * <a href="#Sending JSON to NodeJS to Kafka.">Sending JSON to NodeJS to Kafka.</a>
+		 * <a href="#Step 1 - Create a script called `json_nodejs_kafka.js` with below script.">Step 1 - Create a script called `json_nodejs_kafka.js` with below script.</a>
+		 * <a href="#Step 2 - Start above script on the `nodejs` server.">Step 2 - Start above script on the `nodejs` server.</a>
+		 * <a href="#Step 3 - Execute `curl` command to send the JSON to `nodejs`.">Step 3 - Execute `curl` command to send the JSON to `nodejs`.</a>
+		 * <a href="#Step 4 - Output on nodejs console">Step 4 - Output on nodejs console</a>
+		 * <a href="#Step 5 - Output on the `kafka` consumer side.">Step 5 - Output on the `kafka` consumer side.</a>
+		 * <a href="#Useful Links.">Useful Links.</a>
 
 ---
+
+
+Below are the list required to integrate NodeJS and Kafka.
+This is a simple HOWTO to get started.
+
 
 
 <a name="Installing KAFKA Single Node - Quick Start."></a>
 
 # Installing KAFKA Single Node - Quick Start.
 
-### Download and  Extract
+
+<a name="Download and  Extract"></a>
+
+## Download and  Extract
 
 Download the `tgz` file and extract. 
 
@@ -35,7 +66,10 @@ Download the `tgz` file and extract.
 	kafka  kafka_2.9.2-0.8.2.0
 	[kafka-admin@kafka opt]$ sudo chmod kafka-admin:kafka-admin -R kafka
 
-### Now we are ready to start all the services required.
+
+<a name="Now we are ready to start all the services required."></a>
+
+## Now we are ready to start all the services required.
 
 
 	[kafka-admin@kafka opt]$ cd kafka
@@ -45,7 +79,10 @@ Download the `tgz` file and extract.
 
 This will start us a zookeeper in `localhost` on port `2181`. This configuration can be changed in the `config/zookeeper.properties` file. NOTE : If you want to run the zookeeper on a separate machine make sure the change in the `config/server.properties` so that the kafka server points to the correct zookeeper. By default it points to `localhost:2181`.
 
-### Next we start server.
+
+<a name="Next we start server."></a>
+
+## Next we start server.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-server-start.sh config/server.properties
 
@@ -68,7 +105,10 @@ NOTE : If you want to start multiple make sure you make multiple copies of the `
 
 Now our server has started, lets assume we start only one server. 
 
-### Creating Topics 
+
+<a name="Creating Topics"></a>
+
+## Creating Topics 
 
 To create a topic just execute below command, this will create a single partition. 
 
@@ -84,7 +124,10 @@ We see currently we have only one topic. Now we are all set to send and recv mes
 
 
 
-### Send some message 
+
+<a name="Send some message"></a>
+
+## Send some message 
 
 Open up a new terminal and fire up the Kafka producer script as below. And start typing some message `\n` or `cr` will be end of each message
 
@@ -93,7 +136,10 @@ Open up a new terminal and fire up the Kafka producer script as below. And start
 	This is a message2
 
 
-### Start a Consumer 
+
+<a name="Start a Consumer"></a>
+
+## Start a Consumer 
 
 Open a new terminal and start the consumer. 
 
@@ -107,17 +153,24 @@ Our single node Kafka cluster is Ready.
 
 
 
+
 <a name="Installing NodeJS on Centos 6.6."></a>
 
 # Installing NodeJS on Centos 6.6.
 
-###Installing `nodejs` and `npm` on centos is very simple.
+
+<a name="Installing `nodejs` and `npm` on centos is very simple."></a>
+
+##Installing `nodejs` and `npm` on centos is very simple.
 
 	[nginx-admin@nginx ~]$ sudo su
 	[nginx-admin@nginx ~]# curl -sL https://rpm.nodesource.com/setup | bash -
 	[nginx-admin@nginx ~]# yum install -y nodejs
 
-###Installing `gcc-c++` and `make`.
+
+<a name="Installing `gcc-c++` and `make`."></a>
+
+##Installing `gcc-c++` and `make`.
 
 	[nginx-admin@nginx ~]$ sudo yum install gcc-c++ make
 	[sudo] password for nginx-admin: 
@@ -135,7 +188,10 @@ Our single node Kafka cluster is Ready.
 	Complete!
 
 
-###Later on we will need `kafka-node` lets install that as well.
+
+<a name="Later on we will need `kafka-node` lets install that as well."></a>
+
+##Later on we will need `kafka-node` lets install that as well.
 
 	[nginx-admin@nginx ~]$ sudo npm install kafka-node
 	[sudo] password for nginx-admin: 
@@ -170,7 +226,10 @@ Our single node Kafka cluster is Ready.
 	[nginx-admin@nginx ~]$ ls
 
 
-### Lets do a test.
+
+<a name="Lets do a test."></a>
+
+## Lets do a test.
 
 Create a script called `example.js` with below code.
 	
@@ -191,7 +250,10 @@ So we are all set.
 
 NodeJS is Ready.
 
-### Lets make some simple changes to exsisting script to handle JSON.
+
+<a name="Lets make some simple changes to exsisting script to handle JSON."></a>
+
+## Lets make some simple changes to exsisting script to handle JSON.
 
 Here is a simple script to handle JSON data.
 
@@ -242,9 +304,11 @@ You will see the message received on the script terminal.
 
 Now we are all set to do some RND. 
 
+
+
 <a name="NodeJS Kafka Producer - Using `kafka-node`"></a>
 
-#NodeJS Kafka Producer - Using `kafka-node`
+##NodeJS Kafka Producer - Using `kafka-node`
 
 
 Now that we have Kafka and NodeJS ready. Lets some data to our Kafka Cluster.
@@ -257,7 +321,10 @@ below are the Server Details.
 2. `kafka` is the kafka server (single node)
 
 
-####Step 1: Copy the below script in a file called `producer_nodejs.js`.
+
+<a name="Step 1 - Copy the below script in a file called `producer_nodejs.js`."></a>
+
+###Step 1 - Copy the below script in a file called `producer_nodejs.js`.
 
 	/*
 		Basic producer to send data to kafka from nodejs.
@@ -303,19 +370,31 @@ below are the Server Details.
 	producer.on('error', function(err){}
 
 
-####Step 2 : Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
 
-####Step 3 : Start the consumer service as in the below command.
+<a name="Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`"></a>
+
+###Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
+
+
+<a name="Step 3 - Start the consumer service as in the below command."></a>
+
+###Step 3 - Start the consumer service as in the below command.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 
-####Step 4 : Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer. 
+
+<a name="Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer."></a>
+
+###Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer. 
 
 
 	[nodejs-admin@nodejs nodejs]$ node producer_nodejs.js
 
 
-####Step 5 : Check on the consumer you will see the message sent from `nodejs`.
+
+<a name="Step 5 - Check on the consumer you will see the message sent from `nodejs`."></a>
+
+###Step 5 - Check on the consumer you will see the message sent from `nodejs`.
 
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
@@ -323,9 +402,11 @@ below are the Server Details.
 	This is another message here 
 	This is the First Message I am sending
 
-<a name="Sending JSON to NodeJS to Kafka"></a>
 
-# Sending JSON to NodeJS to Kafka.
+
+<a name="Sending JSON to NodeJS to Kafka."></a>
+
+## Sending JSON to NodeJS to Kafka.
 
 What we are trying to achieve ?
 
@@ -334,7 +415,10 @@ What we are trying to achieve ?
 3. Further processing is done on `kafka`.
 4. We can then see the `json` arrival in `kafka`, using `kafka-console-consumer.sh` script.
 
-###Step 1 : Create a script called `json_nodejs_kafka.js` with below script. 
+
+<a name="Step 1 - Create a script called `json_nodejs_kafka.js` with below script."></a>
+
+###Step 1 - Create a script called `json_nodejs_kafka.js` with below script. 
 
 	
 	/*
@@ -425,18 +509,27 @@ What we are trying to achieve ?
 	}).listen(8125);
 
 
-###Step 2 : Start above script on the `nodejs` server.
+
+<a name="Step 2 - Start above script on the `nodejs` server."></a>
+
+###Step 2 - Start above script on the `nodejs` server.
 
 	[nodejs-admin@nodejs nodejs]$ vim json_nodejs_kafka.js
 	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js
 
 
-###Step 3 : Execute `curl` command to send the JSON to `nodejs`.
+
+<a name="Step 3 - Execute `curl` command to send the JSON to `nodejs`."></a>
+
+###Step 3 - Execute `curl` command to send the JSON to `nodejs`.
 
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"xyz","password":"xyz"}' http://localhost:8125/upload
 
 
-###Step 4 :  Output on nodejs console
+
+<a name="Step 4 - Output on nodejs console"></a>
+
+###Step 4 - Output on nodejs console
 
 	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js 
 	{"username":"xyz","password":"xyz"}
@@ -446,7 +539,10 @@ What we are trying to achieve ?
 `{ test: { '0': 29 } }` response from the kafka cluster that, it has received the `json`.
 
 
-####Step5 : Output on the `kafka` consumer side.
+
+<a name="Step 5 - Output on the `kafka` consumer side."></a>
+
+###Step 5 - Output on the `kafka` consumer side.
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 	{"username":"xyz","password":"xyz"}
@@ -454,7 +550,10 @@ What we are trying to achieve ?
 
 `{"username":"xyz","password":"xyz"}` data received from `nodejs` server.
 
-##### Useful Links.
+
+<a name="Useful Links."></a>
+
+#### Useful Links.
 
 [http://kafka.apache.org/documentation.html](http://kafka.apache.org/documentation.html "Kafka Documentation")
 
