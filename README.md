@@ -92,6 +92,7 @@ NOTE : If you want to start multiple make sure you make multiple copies of the `
 2. `port` where this server is going to `listen` on.
 3. `log.dir` where to right the log. 
 
+Here is sample properties file contains.
  
 	config/server-1.properties:
 	    broker.id=1
