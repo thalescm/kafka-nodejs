@@ -18,6 +18,8 @@ What we are trying to achieve ?
 
 ###Step 3 : Execute `curl` command to send the JSON to `nodejs`.
 
+NOTE : Assuming that we have already created topics in kafka as shown in Step 5.
+
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"xyz","password":"xyz"}' http://localhost:8125/upload/topic/A
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"abc","password":"xyz"}' http://localhost:8125/upload/topic/B
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"efg","password":"xyz"}' http://localhost:8125/upload/topic/C
